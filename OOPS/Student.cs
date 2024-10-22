@@ -8,18 +8,20 @@ namespace OOPS
 {
     public class Student
     {
+        private static int count;
         private int rollno;
         private string name;
         private int mathmarks,englishmarks,sciencemarks,totalmarks;
         private double percentage;
 
-        public Student()
+        static Student()
         {
-            
+            count = 0;
         }
-        public Student(int rno,string n,int mm,int em,int sm)
+        public Student(string n,int mm,int em,int sm)
         {
-            rollno = rno;
+            count++;
+            rollno = count;
             name = n;
             mathmarks = mm;
             englishmarks = em;
@@ -30,9 +32,13 @@ namespace OOPS
             totalmarks = mathmarks+englishmarks +sciencemarks;
             percentage = ((double)totalmarks/300)*100;
         }
+
+        public static int DisplayCount() {
+            return count;        
+        }
         public string Print()
         {
-            return $"Rollno ${rollno} Name {name} TotalMarks={totalmarks} Percentage={percentage}%";
+            return $"Rollno {rollno} Name {name} TotalMarks={totalmarks} Percentage={percentage}%";
         }
 
     }
